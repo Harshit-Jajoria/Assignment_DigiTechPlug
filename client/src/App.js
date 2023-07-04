@@ -28,7 +28,7 @@ const App = () => {
         },
       }
     );
-    console.log(savedData);
+    console.log(savedData.data);
   };
 
   return (
