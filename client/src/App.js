@@ -28,6 +28,12 @@ const App = () => {
         },
       }
     );
+    setInputValues({
+      content: '',
+    tone: '',
+    keywords: '',
+    command: '',
+    })
     console.log(savedData.data);
   };
 
