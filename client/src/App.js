@@ -17,16 +17,19 @@ const App = () => {
       [name]: value,
     }));
   };
-  const handleSubmit= async (e)=>{
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const savedData = await axios.post(`http://localhost:5000/add-data`, inputValues, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+    const savedData = await axios.post(
+      `https://assignment-digi-tech-plug-server.vercel.app/add-data`,
+      inputValues,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
     console.log(savedData);
-
-  }
+  };
 
   return (
     <div className="container">
