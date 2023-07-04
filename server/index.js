@@ -2,25 +2,6 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import userRoutes from './routes.js';
-import DataModel from './model.js';
-
-const obj=[
-    {
-        content:'in the content',
-        tone:'in the house of tone',
-        keywords:['in the','house of','keywords'],
-        command:'do this command'
-    },
-    {
-        content:' content',
-        tone:'in the ',
-        keywords:['in the','','keywords'],
-        command:'do  command'
-    },
-
-]
-
-    
 
 
 // Configuration
@@ -50,8 +31,6 @@ mongoose
   })
 
   .then(() => {
-    console.log(`conneted to db`);
-    DataModel.insertMany(obj)
-    
+    console.log(`conneted to db`);   
   })
   .catch((error) => console.log(`${error} -->  did not connect`));

@@ -1,21 +1,32 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './index.css';
 
 const App = () => {
   const [inputValues, setInputValues] = useState({
-    brief: '',
-    toneOfVoice: '',
+    content: '',
+    tone: '',
     keywords: '',
-    runCommandInput: '',
+    command: '',
   });
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
     setInputValues((prevState) => ({
       ...prevState,
       [name]: value,
     }));
   };
+  const handleSubmit= async (e)=>{
+    e.preventDefault();
+    const savedData = await axios.post(`http://localhost:5000/add-data`, inputValues, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    console.log(savedData);
+
+  }
 
   return (
     <div className="container">
@@ -24,11 +35,11 @@ const App = () => {
           <label htmlFor="one">Content Description/Brief</label>
           <br />
           <textarea
-            name="brief"
+            name="content"
             id="one"
             cols="10"
             rows="8"
-            value={inputValues.brief}
+            value={inputValues.content}
             onChange={handleInputChange}
           ></textarea>
         </div>
@@ -38,8 +49,8 @@ const App = () => {
           <input
             type="text"
             id="two"
-            name="toneOfVoice"
-            value={inputValues.toneOfVoice}
+            name="tone"
+            value={inputValues.tone}
             onChange={handleInputChange}
           />
         </div>
@@ -81,7 +92,7 @@ const App = () => {
         </div>
         <div className="display">
           <div className="col1">
-            <p>Hello, I am from the display of in the life of pie</p>
+            <p>{inputValues.command}</p>
           </div>
 
           <div className="col2">
@@ -90,14 +101,14 @@ const App = () => {
                 <input
                   type="text"
                   className="run-command-input"
-                  name="runCommandInput"
-                  value={inputValues.runCommandInput}
+                  name="command"
+                  value={inputValues.command}
                   onChange={handleInputChange}
                 />
                 <button>Run Command</button>
               </div>
               <div className="c2">
-                <button>Compose</button>
+                <button onClick={handleSubmit}>Compose</button>
               </div>
             </div>
           </div>

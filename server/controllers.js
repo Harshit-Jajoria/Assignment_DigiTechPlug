@@ -3,7 +3,7 @@ import DataModel from './model.js';
 // READ
 export const getUsers = async (req, res) => {
   try {
-    const user = await UserModel.find();
+    const user = await DataModel.find();
     res.status(200).json(user);
   } catch (err) {
     res.status(404).json({ message: err.message });
@@ -11,17 +11,14 @@ export const getUsers = async (req, res) => {
 };
 
 // Resgister User
-export const register = async (req, res) => {
+export const addData = async (req, res) => {
   try {
-    const { name, phoneNumber, password } = req.body;
-
-    const salt = await bcrypt.genSalt();
-    const passwordHash = await bcrypt.hash(password, salt);
-
-    const newUser = new UserModel({
-      name,
-      phoneNumber,
-      password: passwordHash,
+    const { content, tone, keywords,command } = req.body;
+    const newUser = new DataModel({
+      content,
+      tone,
+      keywords,
+      command
     });
 
     const savedUser = await newUser.save();

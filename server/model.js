@@ -10,7 +10,7 @@ const DataSchema = new mongoose.Schema(
       default: '',
     },
     keywords: {
-      type: Array,
+      type: String,
       default: '',
     },
     command: {
