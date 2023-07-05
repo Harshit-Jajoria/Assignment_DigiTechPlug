@@ -26,7 +26,7 @@ code {
   align-items: center;
 }
 .column1 {
-  border: 2px solid #2ec733;
+  border: 2px solid #000000;
   /* background-color: blue; */
   width: 20%;
   height: 80%;
@@ -58,23 +58,26 @@ input {
 
 .column2 {
   margin-left: 1rem;
-  border: 2px solid #2ec733;
+  border: 2px solid #000000;
   /* background-color: red; */
   width: 50%;
   height: 80%;
 }
 
 .nav {
-  border: 2px solid #2ec733;
+  border-bottom: 2px solid #000000;
 }
 
 .shift {
-  border-left: 3px solid pink;
+  /* border-left: 3px solid pink; */
   border-right: 3px solid pink;
+  cursor: pointer;
 }
 .fontsize,
 .fontstyle {
   border-right: 3px solid pink;
+  cursor: pointer;
+
 }
 .redo,
 .h4,
@@ -87,6 +90,7 @@ input {
 }
 
 .display {
+  padding: 1rem;
   height: 70vh;
   font-size: 1.5rem;
 }
