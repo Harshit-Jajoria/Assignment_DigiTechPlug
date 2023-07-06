@@ -35,6 +35,12 @@ const App = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if(inputValues.tone==='') {
+      alert("Tone cannot be blank")
+    }
+    else{
+
+    
     const savedData = await axios.post(
       `https://assignment-digi-tech-plug-server.vercel.app/add-data`,
       inputValues,
@@ -52,6 +58,7 @@ const App = () => {
     });
     console.log(savedData.data);
     alert(' Data has been saved successfully to DataBase')
+  }
   };
 
   const handleUndo = () => {
@@ -93,6 +100,7 @@ const App = () => {
         </div>
         <div className="input2">
           <label htmlFor="two">Tone Of Voice</label>
+          {inputValues.tone==='' && <p style={{color:'red'}}>Tone Cannot be Blank</p>}
           <br />
           <input
             type="text"
